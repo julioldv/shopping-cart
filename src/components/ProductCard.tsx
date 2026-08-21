@@ -3,9 +3,10 @@ import type { Product } from '../types/Product'
 
 type ProductCardProps = {
   product: Product
+  onAddToCart: (product: Product, quantity: number) => void
 }
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1)
 
   function handleDecrease() {
@@ -24,6 +25,10 @@ function ProductCard({ product }: ProductCardProps) {
     if (newQuantity >= 1) {
       setQuantity(newQuantity)
     }
+  }
+
+  function handleAddToCart() {
+    onAddToCart(product, quantity)
   }
 
   return (
@@ -49,7 +54,9 @@ function ProductCard({ product }: ProductCardProps) {
         </button>
       </div>
 
-      <button type="button">Add to Cart</button>
+      <button type="button" onClick={handleAddToCart}>
+        Add to Cart
+      </button>
     </article>
   )
 }

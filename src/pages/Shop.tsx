@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import type { Product } from '../types/Product'
 
-function Shop() {
+type ShopProps = {
+  onAddToCart: (product: Product, quantity: number) => void
+}
+
+function Shop({ onAddToCart }: ShopProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -42,7 +46,11 @@ function Shop() {
 
       <div>
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            onAddToCart={onAddToCart}
+          />
         ))}
       </div>
     </main>
