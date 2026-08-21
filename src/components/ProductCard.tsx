@@ -24,6 +24,14 @@ function ProductCard({ product }: ProductCardProps) {
     setQuantity(quantity + 1)
   }
 
+  function handleQuantityChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const newQuantity = Number(event.target.value)
+
+    if (newQuantity >= 1) {
+      setQuantity(newQuantity)
+    }
+  }
+
   return (
     <article>
       <img src={product.image} alt={product.title} />
@@ -35,7 +43,12 @@ function ProductCard({ product }: ProductCardProps) {
           -
         </button>
 
-        <input type="number" min="1" value={quantity} readOnly />
+        <input
+          type="number"
+          min="1"
+          value={quantity}
+          onChange={handleQuantityChange}
+        />
 
         <button type="button" onClick={handleIncrease}>
           +
