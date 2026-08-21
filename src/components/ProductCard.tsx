@@ -1,11 +1,5 @@
 import { useState } from 'react'
-
-type Product = {
-  id: number
-  title: string
-  price: number
-  image: string
-}
+import type { Product } from '../types/Product'
 
 type ProductCardProps = {
   product: Product
