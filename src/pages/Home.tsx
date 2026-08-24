@@ -2,13 +2,20 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   return (
-    <main>
-      <section>
-        <h1>Simple Store</h1>
-        <p>
-          Browse our selection of products and add your favorites to your cart.
+    <main className="home">
+      <section className="home__hero">
+        <p className="home__eyebrow">JCL Store</p>
+
+        <h1>Find something you’ll love.</h1>
+
+        <p className="home__description">
+          Browse a simple selection of products and add your favorites to your
+          cart.
         </p>
-        <Link to="/shop">Shop now</Link>
+
+        <Link className="primary-link" to="/shop">
+          Shop now
+        </Link>
       </section>
     </main>
   )

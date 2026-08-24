@@ -8,7 +8,7 @@ function Navbar({ cartQuantity }: NavbarProps) {
   return (
     <header className="navbar">
       <NavLink className="navbar__brand" to="/">
-        Simple Store
+        JCL Store
       </NavLink>
 
       <nav className="navbar__links">
