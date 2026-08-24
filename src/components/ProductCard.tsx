@@ -32,31 +32,45 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
   }
 
   return (
-    <article>
-      <img src={product.image} alt={product.title} />
-      <h2>{product.title}</h2>
-      <p>${product.price}</p>
-
-      <div>
-        <button type="button" onClick={handleDecrease}>
-          -
-        </button>
-
-        <input
-          type="number"
-          min="1"
-          value={quantity}
-          onChange={handleQuantityChange}
+    <article className="product-card">
+      <div className="product-card__image-wrapper">
+        <img
+          className="product-card__image"
+          src={product.image}
+          alt={product.title}
         />
-
-        <button type="button" onClick={handleIncrease}>
-          +
-        </button>
       </div>
 
-      <button type="button" onClick={handleAddToCart}>
-        Add to Cart
-      </button>
+      <div className="product-card__content">
+        <h2>{product.title}</h2>
+        <p className="product-card__price">${product.price.toFixed(2)}</p>
+
+        <div className="quantity-control">
+          <button type="button" onClick={handleDecrease}>
+            -
+          </button>
+
+          <input
+            type="number"
+            min="1"
+            value={quantity}
+            onChange={handleQuantityChange}
+            aria-label={`Quantity for ${product.title}`}
+          />
+
+          <button type="button" onClick={handleIncrease}>
+            +
+          </button>
+        </div>
+
+        <button
+          className="primary-button"
+          type="button"
+          onClick={handleAddToCart}
+        >
+          Add to Cart
+        </button>
+      </div>
     </article>
   )
 }

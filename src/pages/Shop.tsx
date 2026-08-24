@@ -33,18 +33,30 @@ function Shop({ onAddToCart }: ShopProps) {
   }, [])
 
   if (isLoading) {
-    return <p>Loading products...</p>
+    return (
+      <main className="shop">
+        <p>Loading products...</p>
+      </main>
+    )
   }
 
   if (error) {
-    return <p>{error}</p>
+    return (
+      <main className="shop">
+        <p>{error}</p>
+      </main>
+    )
   }
 
   return (
-    <main>
-      <h1>Shop</h1>
+    <main className="shop">
+      <header className="shop__header">
+        <p className="shop__eyebrow">Catalog</p>
+        <h1>Shop</h1>
+        <p>Browse our current selection of products.</p>
+      </header>
 
-      <div>
+      <div className="product-grid">
         {products.map((product) => (
           <ProductCard
             key={product.id}
