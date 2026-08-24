@@ -15,24 +15,36 @@ function Cart({ cart, onIncrease, onDecrease, onRemove }: CartProps) {
   )
 
   return (
-    <main>
-      <h1>Cart</h1>
+    <main className="cart">
+      <header className="cart__header">
+        <p className="cart__eyebrow">Your order</p>
+        <h1>Cart</h1>
+      </header>
 
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="cart__empty">Your cart is empty.</p>
       ) : (
-        <div>
-          {cart.map((item) => (
-            <CartItem
-              key={item.product.id}
-              item={item}
-              onIncrease={onIncrease}
-              onDecrease={onDecrease}
-              onRemove={onRemove}
-            />
-          ))}
+        <div className="cart__content">
+          <div className="cart__items">
+            {cart.map((item) => (
+              <CartItem
+                key={item.product.id}
+                item={item}
+                onIncrease={onIncrease}
+                onDecrease={onDecrease}
+                onRemove={onRemove}
+              />
+            ))}
+          </div>
 
-          <p>Total: ${total.toFixed(2)}</p>
+          <aside className="cart__summary">
+            <h2>Order summary</h2>
+
+            <div className="cart__summary-row">
+              <span>Total</span>
+              <strong>${total.toFixed(2)}</strong>
+            </div>
+          </aside>
         </div>
       )}
     </main>
