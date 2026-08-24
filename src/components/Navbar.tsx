@@ -6,11 +6,17 @@ type NavbarProps = {
 
 function Navbar({ cartQuantity }: NavbarProps) {
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/shop">Shop</NavLink>
-      <NavLink to="/cart">Cart ({cartQuantity})</NavLink>
-    </nav>
+    <header className="navbar">
+      <NavLink className="navbar__brand" to="/">
+        Simple Store
+      </NavLink>
+
+      <nav className="navbar__links">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/shop">Shop</NavLink>
+        <NavLink to="/cart">Cart ({cartQuantity})</NavLink>
+      </nav>
+    </header>
   )
 }
 

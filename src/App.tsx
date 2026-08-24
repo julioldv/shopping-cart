@@ -58,7 +58,7 @@ function App() {
   const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0)
 
   return (
-    <>
+    <div className="app">
       <Navbar cartQuantity={cartQuantity} />
 
       <Routes>
@@ -76,7 +76,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </div>
   )
 }
 
