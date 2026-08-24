@@ -1,10 +1,14 @@
-import type { CartItem } from '../types/CartItem'
+import CartItem from '../components/CartItem'
+import type { CartItem as CartItemType } from '../types/CartItem'
 
 type CartProps = {
-  cart: CartItem[]
+  cart: CartItemType[]
+  onIncrease: (productId: number) => void
+  onDecrease: (productId: number) => void
+  onRemove: (productId: number) => void
 }
 
-function Cart({ cart }: CartProps) {
+function Cart({ cart, onIncrease, onDecrease, onRemove }: CartProps) {
   const total = cart.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
     0,
@@ -19,12 +23,13 @@ function Cart({ cart }: CartProps) {
       ) : (
         <div>
           {cart.map((item) => (
-            <article key={item.product.id}>
-              <img src={item.product.image} alt={item.product.title} />
-              <h2>{item.product.title}</h2>
-              <p>${item.product.price}</p>
-              <p>Quantity: {item.quantity}</p>
-            </article>
+            <CartItem
+              key={item.product.id}
+              item={item}
+              onIncrease={onIncrease}
+              onDecrease={onDecrease}
+              onRemove={onRemove}
+            />
           ))}
 
           <p>Total: ${total.toFixed(2)}</p>

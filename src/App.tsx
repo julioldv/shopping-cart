@@ -29,6 +29,32 @@ function App() {
     })
   }
 
+  function handleIncreaseCartItem(productId: number) {
+    setCart((currentCart) =>
+      currentCart.map((item) =>
+        item.product.id === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      ),
+    )
+  }
+
+  function handleDecreaseCartItem(productId: number) {
+    setCart((currentCart) =>
+      currentCart.map((item) =>
+        item.product.id === productId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item,
+      ),
+    )
+  }
+
+  function handleRemoveCartItem(productId: number) {
+    setCart((currentCart) =>
+      currentCart.filter((item) => item.product.id !== productId),
+    )
+  }
+
   const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0)
 
   return (
@@ -38,7 +64,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop onAddToCart={handleAddToCart} />} />
-        <Route path="/cart" element={<Cart cart={cart} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cart={cart}
+              onIncrease={handleIncreaseCartItem}
+              onDecrease={handleDecreaseCartItem}
+              onRemove={handleRemoveCartItem}
+            />
+          }
+        />
       </Routes>
     </>
   )
