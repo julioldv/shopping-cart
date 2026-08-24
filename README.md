@@ -25,11 +25,7 @@ A responsive shopping cart application built with React and TypeScript.
 
 ## Live Demo
 
-Add your deployed link here.
-
-## Screenshots
-
-Optional: add one or two screenshots of the Shop and Cart pages.
+[View Live Demo](https://shopping-cart-jcl-298d.vercel.app/)
 
 ## Running Locally
 
