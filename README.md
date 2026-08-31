@@ -30,7 +30,7 @@ A responsive shopping cart application built with React and TypeScript.
 ## Running Locally
 
 ```bash
-git clone
+git clone https://github.com/julioldv/shopping-cart.git
 cd shopping-cart
 npm install
 npm run dev
